@@ -3,6 +3,9 @@ kind: Deployment
 metadata:
   name: app-dep
 spec:
+  selector:
+    matchLabels:
+      app: jenkins
   replicas: 1
   template:
     metadata:
@@ -11,7 +14,7 @@ spec:
     spec:
       containers:
         - name: jenkins
-          image: dockerweb
+          image: ramesh8800/dotnetcore:$BUILD_NUMBER
           imagePullPolicy: IfNotPresent
           ports:
             - name: http-port
