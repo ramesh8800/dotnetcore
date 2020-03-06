@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: app-dep
+  name: dotnetcore-dep
 spec:
   replicas: 1
   template:
@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
         - name: jenkins
-          image: dockerweb
+          image: ramesh8800/dotnetcore:$BUILD_NUMBER
           imagePullPolicy: IfNotPresent
           ports:
             - name: http-port
@@ -20,7 +20,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: app-svc
+  name: dotnetcore-svc
 spec:
   type: NodePort
   ports:
